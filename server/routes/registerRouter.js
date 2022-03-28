@@ -1,4 +1,4 @@
-let userModel = require("./models/userModel"); //import the user model to preform crud ops. on database
+let userModel = require("../models/userModel"); //import the user model to preform crud ops. on database
 const router = require("express").Router(); //import a router to set up get and post request
 const bcrypt = require("bcrypt"); // import hashing function
 
@@ -12,7 +12,7 @@ router.route("/add").post( async (req, res) => { //set up a post route for calli
         const newUser = new userModel({ //create a new instance of userModel to save to database
             username: user.username, //populate the model with the information sent by the front end
             email: user.email, 
-            passowrd = user.passowrd
+            password: user.password
         });
         await newUser.save() //asncy function so await save then do the following 
             .then(()=>{

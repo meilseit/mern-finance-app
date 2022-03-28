@@ -1,7 +1,7 @@
 const express = require("express"); //import express 
 const cors = require("cors"); //import cors 
 const mongoose = require("mongoose"); //import mongoose module
-const cors = require("cors");
+
 
 require('dotenv').config(); //configer process.env for environment variables 
 
@@ -15,10 +15,10 @@ const uri = process.env.ATLAS_URI;
 
 mongoose.connect(uri) //the .connect function is async so we can do a .then and .catch string
     .then((res) => { //only start app when the database is connected
-        const registerRouter = require("./routes/userRegister"); //import route for registration 
+        const registerRouter = require("./routes/registerRouter"); //import route for registration 
         app.use("/register", registerRouter) //tell app to load register Router when we use path /register 
 
-        const loginRouter = require("./routes/userLogin")/ //import route for login
+        const loginRouter = require("./routes/loginRouter"); //import route for login
         app.use("/login", loginRouter ) //tell app to use login Router when we use path /login
 
         app.listen(port, ()=>{console.log(`sever is running on port ${port}`)}); //this line starts the app at the specified port
@@ -30,6 +30,10 @@ const connection = mongoose.connection; //this will generate a mongoose connecti
 connection.once('open', () =>{ //now we check wether or not the connection is open and sends a message to the console
     console.log("Connection to server established!");
 })
+
+const jwtCheck = (req, res, next) => {
+    const token = req.headers["x-access-token"]?.split(" ")[1]
+}
 
     
 
