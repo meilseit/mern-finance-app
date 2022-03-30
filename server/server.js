@@ -21,6 +21,9 @@ mongoose.connect(uri) //the .connect function is async so we can do a .then and 
         const loginRouter = require("./routes/loginRouter"); //import route for login
         app.use("/login", loginRouter ) //tell app to use login Router when we use path /login
 
+        const userDataRouter = require("./routes/userDataRouter");
+        app.use("/data", userDataRouter);
+
         app.listen(port, ()=>{console.log(`sever is running on port ${port}`)}); //this line starts the app at the specified port
     
     })
