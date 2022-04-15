@@ -20,6 +20,5 @@ database. The project is hosted on an AWS server. This server-side API is built 
 - Jsonwebtoken Module: unique idetifying web tokens to pass to the front end
 - Express: web application framework for the backend
 - Node: javascript runtime environment
-- 
 
 
